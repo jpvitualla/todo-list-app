@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import TodoItem from "./TodoItem";
+import Button from "../../src/UI/Button";
 
 const TodoForm = () => {
   const [todos, setTodos] = useState([]);
@@ -28,7 +29,12 @@ const TodoForm = () => {
     });
   };
 
-  return <>{renderTodos()}</>;
+  return (
+    <>
+      {renderTodos()}
+      <Button />
+    </>
+  );
 };
 
 export default TodoForm;
