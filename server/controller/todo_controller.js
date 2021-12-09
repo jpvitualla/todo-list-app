@@ -1,13 +1,19 @@
 const TodoModel = require("../model/todo_schema");
 
 const getTodos = async (req, res) => {
-  try {
-    const todo = await TodoModel.find({});
-
-    res.status(200).json({ todo });
-  } catch (error) {
-    res.status(500).json({ message: error });
-  }
+  // let todos;
+  // try {
+  //   todos = await TodoModel.find({});
+  // } catch (error) {
+  //   res.status(500).json({ message: error });
+  // }
+  // res.json({ todos: todos.map((todo) => todo.toObject({ getters: true }))  });
+  TodoModel.find({}, (err, result) => {
+    if (err) {
+      res.send(err);
+    }
+    res.send(result);
+  });
 };
 
 const createTodos = async (req, res) => {
