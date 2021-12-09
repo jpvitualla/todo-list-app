@@ -1,17 +1,24 @@
 import * as React from "react";
+import CreateTask from "../components/CreateTask"
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 
 const Button = () => {
+
+  const createHandler = () => {
+    return <CreateTask />
+    // console.log("212")
+  };
+
   return (
     <Box
       sx={{
         "& > :not(style)": {
           m: 1,
           position: "fixed",
-          width: "80px",
-          height: "80px",
+          width: "60px",
+          height: "60px",
           bottom: "40px",
           right: "40px",
           backgroundColor: "#0C9",
@@ -23,7 +30,7 @@ const Button = () => {
       }}
     >
       <Fab size="large" color="secondary" aria-label="add">
-        <AddIcon />
+        <AddIcon onClick={createHandler} />
       </Fab>
     </Box>
   );
