@@ -14,12 +14,14 @@ const Card = (props) => {
           flexWrap: "wrap",
           "& > :not(style)": {
             m: 1,
-            width: "30rem",
-            height: "20rem",
+            width: "auto",
+            height: "auto",
+            padding: "10px",
             justifyContent: "center",
             display: "flex",
             marginTop: "5rem",
-            marginBottom: "5rem"
+            marginBottom: "5rem",
+            borderRadius: "10px"
           },
         }}
       >
