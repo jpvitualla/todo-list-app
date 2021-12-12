@@ -1,17 +1,15 @@
-// import {
-//   BrowserRouter as Router,
-//   Route,
-//   Redirect,
-//   Switch,
-// } from "react-router-dom";
-
-import CreateTask from "./components/CreateTask";
 import TodoForm from "./components/TodoForm";
+// import Container from "./styles/Container";
 
 function App() {
   return (
     <>
-     <TodoForm />
+    <TodoForm />
+      {/* <Container>
+        <div className="content-container">
+          
+        </div>
+      </Container> */}
     </>
   );
 }

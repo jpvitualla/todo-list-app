@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import TodoItem from "./TodoItem";
-import Button from "../../src/UI/Button";
+// import Button from "../../src/UI/Button";
+import CreateTodos from "./FormsElement/CreateTodos";
 
 const TodoForm = () => {
   const [todos, setTodos] = useState([]);
@@ -31,8 +32,8 @@ const TodoForm = () => {
 
   return (
     <>
+    <CreateTodos />
       {renderTodos()}
-      <Button />
     </>
   );
 };
