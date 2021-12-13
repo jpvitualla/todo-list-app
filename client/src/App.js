@@ -7,18 +7,18 @@ import {
 
 import TodoForm from "./components/TodoForm";
 import TodoItem from "./components/TodoItem";
-import EditTodo from "./components/EditTodo";
+import EditTodo from "./components/FormsElement/EditTodo";
 
 function App() {
   return (
     <>
       {/* <EditTodo /> */}
       <Router>
-        <TodoForm />
-        <TodoItem />
+        {/* <TodoForm />
+        <TodoItem /> */}
         <Switch>
-          {/* <Route exact path="/" component={TodoForm} />
-          <Route path="/view-todos" component={TodoItem} /> */}
+          <Route exact path="/" component={TodoForm} />
+          <Route exact path="/view/todos" component={TodoItem} />
           <Route path="/todos/:todoId" component={EditTodo} />
         </Switch>
       </Router>

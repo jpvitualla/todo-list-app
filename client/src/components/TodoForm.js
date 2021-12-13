@@ -3,7 +3,9 @@ import CreateTodos from "./FormsElement/CreateTodos";
 const TodoForm = () => {
   return (
     <>
-      <CreateTodos />
+      <div>
+        <CreateTodos />
+      </div>
     </>
   );
 };

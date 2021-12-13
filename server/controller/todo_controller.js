@@ -51,7 +51,7 @@ const getTodoById = async (req, res) => {
   }
 };
 
-const updateTodos = async (req, res) => {
+const updateTodos = async (req, res, next) => {
   const { taskName, description } = req.body;
   const todoId = req.params.uId;
 
@@ -63,8 +63,9 @@ const updateTodos = async (req, res) => {
         .status(404)
         .json({ message: "Could not find a to-do for the provided id." });
     }
+    
   } catch (error) {
-    res.status(500).json({ message: error });
+    res.status(500).json({ message: "Saving place failed, please try again" });
   }
 
   todo.taskName = taskName;
@@ -73,9 +74,9 @@ const updateTodos = async (req, res) => {
   try {
     await todo.save();
   } catch (error) {
-    res.status(500).json({ message: "Saving place failed, please try again" });
+    res.status(500).json({ message: "Saving place failed, please try again"  });
+    return next(error);
   }
-
   res.status(200).json({ todo: todo.toObject({ getters: true }) });
 };
 

@@ -37,6 +37,7 @@ export default function BasicTable() {
       <TableContainer
         component={Paper}
         style={{
+          marginTop: "5rem",
           marginBottom: "2rem",
           width: "100%",
         }}
@@ -70,16 +71,15 @@ export default function BasicTable() {
                         style={{ textDecoration: "none" }}
                       >
                         <Button variant="contained" color="success">
-                          Edit
+                          EDIT
                         </Button>
                       </Link>
                       <Button
                         color="error"
                         onClick={() => deleteThesis(todo._id)}
                       >
-                        Delete
+                        DONE
                       </Button>
-                      <Button>Done</Button>
                     </ButtonGroup>
                   </TableCell>
                 </TableRow>
@@ -99,6 +99,11 @@ export default function BasicTable() {
           </TableBody>
         </Table>
       </TableContainer>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <Button variant="contained" size="large">
+          ADD TASK
+        </Button>
+      </Link>
     </Container>
   );
 }

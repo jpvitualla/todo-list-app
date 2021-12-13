@@ -1,8 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import Card from "../../UI/Card";
 import TextField from "@mui/material/TextField";
+import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
 
 const CreateTodos = () => {
@@ -45,17 +47,30 @@ const CreateTodos = () => {
               style={{ width: "100%" }}
               rows={4}
               onChange={descriptionHandler}
+        
             />
           </div>
           <div>
-            <Button
-              type="submit"
-              variant="contained"
-              style={{ marginTop: "2rem", marginLeft: "15rem" }}
-              onClick={() => addThesis()}
-            >
-              ADD TASK
-            </Button>
+            <ButtonGroup>
+              <Button
+                type="submit"
+                variant="contained"
+                style={{ marginTop: "2rem", marginLeft: "15rem" }}
+                onClick={() => addThesis()}
+              >
+                ADD TASK
+              </Button>
+              <Link to="/view/todos" style={{ textDecoration: "none" }}>
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  style={{ marginTop: "2rem" }}
+                  // onClick={() => addThesis()}
+                >
+                  VIEW TODOS
+                </Button>
+              </Link>
+            </ButtonGroup>
           </div>
         </form>
       </Card>
