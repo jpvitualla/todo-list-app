@@ -15,7 +15,8 @@ const CreateTodos = () => {
   const descriptionHandler = (event) => {
     setDescription(event.target.value);
   };
-  const addThesis = () => {
+  const addThesis = (event) => {
+    // event.preventDefault();
     axios.post("http://localhost:5000/api/todo/create-todo", {
       taskName: taskName,
       description: description,
@@ -51,7 +52,7 @@ const CreateTodos = () => {
               type="submit"
               variant="contained"
               style={{ marginTop: "2rem", marginLeft: "15rem" }}
-              onClick={()=>addThesis()}
+              onClick={() => addThesis()}
             >
               ADD TASK
             </Button>

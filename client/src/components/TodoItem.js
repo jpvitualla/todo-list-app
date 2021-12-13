@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import axios from "axios";
 
 import Table from "@mui/material/Table";
@@ -14,6 +16,11 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 export default function BasicTable() {
   const [todos, setTodos] = useState([]);
+
+  const deleteThesis = (id) => {
+    axios.delete(`http://localhost:5000/api/todo/delete/${id}`);
+    window.location.reload(false);
+  };
 
   useEffect(() => {
     try {
@@ -43,29 +50,52 @@ export default function BasicTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {todos.map((todo, key) => (
-              <TableRow
-                key={key}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell align="center" component="th" scope="row">
-                  {todo.taskName}
+            {todos.length ? (
+              todos.map((todo, key) => (
+                <TableRow
+                  key={key}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell align="center" component="th" scope="row">
+                    {todo.taskName}
+                  </TableCell>
+                  <TableCell align="center">{todo.description}</TableCell>
+                  <TableCell align="center">
+                    <ButtonGroup
+                      variant="contained"
+                      aria-label="outlined primary button group"
+                    >
+                      <Link
+                        to={`/todos/${todo._id}`}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <Button variant="contained" color="success">
+                          Edit
+                        </Button>
+                      </Link>
+                      <Button
+                        color="error"
+                        onClick={() => deleteThesis(todo._id)}
+                      >
+                        Delete
+                      </Button>
+                      <Button>Done</Button>
+                    </ButtonGroup>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell />
+                <TableCell
+                  align="center"
+                  style={{ fontSize: "25px", fontWeight: "bold" }}
+                >
+                  No todos maybe add one?
                 </TableCell>
-                <TableCell align="center">{todo.description}</TableCell>
-                <TableCell align="center">
-                  <ButtonGroup
-                    variant="contained"
-                    aria-label="outlined primary button group"
-                  >
-                    <Button variant="contained" color="success">
-                      Edit
-                    </Button>
-                    <Button color="error">Delete</Button>
-                    <Button>Done</Button>
-                  </ButtonGroup>
-                </TableCell>
+                <TableCell />
               </TableRow>
-            ))}
+            )}
           </TableBody>
         </Table>
       </TableContainer>
