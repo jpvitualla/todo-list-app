@@ -45,9 +45,24 @@ export default function BasicTable() {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="center">Task Name</TableCell>
-              <TableCell align="center">Description</TableCell>
-              <TableCell align="center">Action</TableCell>
+              <TableCell
+                align="center"
+                style={{ fontSize: "25px", fontWeight: "bold" }}
+              >
+                TASK NAME
+              </TableCell>
+              <TableCell
+                align="center"
+                style={{ fontSize: "25px", fontWeight: "bold" }}
+              >
+                DESCRIPTION
+              </TableCell>
+              <TableCell
+                align="center"
+                style={{ fontSize: "25px", fontWeight: "bold" }}
+              >
+                ACTIONS
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -57,11 +72,18 @@ export default function BasicTable() {
                   key={key}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell align="center" component="th" scope="row">
+                  <TableCell
+                    align="center"
+                    component="th"
+                    scope="row"
+                    style={{ fontSize: "20px" }}
+                  >
                     {todo.taskName}
                   </TableCell>
-                  <TableCell align="center">{todo.description}</TableCell>
-                  <TableCell align="center">
+                  <TableCell align="center" style={{ fontSize: "20px" }}>
+                    {todo.description}
+                  </TableCell>
+                  <TableCell align="center" style={{ fontSize: "20px" }}>
                     <ButtonGroup
                       variant="contained"
                       aria-label="outlined primary button group"
@@ -70,13 +92,18 @@ export default function BasicTable() {
                         to={`/todos/${todo._id}`}
                         style={{ textDecoration: "none" }}
                       >
-                        <Button variant="contained" color="success">
+                        <Button
+                          variant="contained"
+                          color="success"
+                          size="large"
+                        >
                           EDIT
                         </Button>
                       </Link>
                       <Button
                         color="error"
                         onClick={() => deleteThesis(todo._id)}
+                        size="large"
                       >
                         DONE
                       </Button>
